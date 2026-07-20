@@ -57,7 +57,7 @@ The intermediate JSON representation is parsed and transformed into optimized C 
 *Outputs provided in this repo:* The generated C code and network headers are located under `scripts/codegen/`.
 
 ### 3. PC Simulation
-If you wish to test the model and training loop on a PC emulator before flashing to an MCU, you can compile the project using standard GCC. This uses the `arm_intrinsics_mock.h` header to simulate [ARM CMSIS-NN](https://github.com/ARM-software/CMSIS-NN) math functions on x86:
+If you wish to test the model and training loop on a PC emulator before flashing to an MCU, you can compile the project using standard GCC. This uses the `arm_intrinsics_mock.h` header to simulate [ARM CMSIS-NN](https://github.com/ARM-software/CMSIS_5/tree/5b58d2da8af7cee64cc9145ee1154609bdfee9f9) math functions on x86:
 
 ```bash
 gcc -O3 -o tte_main \
