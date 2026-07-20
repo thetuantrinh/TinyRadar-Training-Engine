@@ -9,10 +9,9 @@ Welcome to the official repository for **"TinyRadar-OL: Ultra-Low Memory Continu
 TinyRadar-OL introduces a breakthrough in running **on-device training** for Hand Gesture Recognition (HGR) using FMCW radar. By leveraging our custom **TinyRadar Training Engine (TTE)**, the framework performs full int8-quantized forward passes and customized backward passes. This allows edge devices to personalize gesture recognition models on the fly while operating under strict ultra-low memory constraints, eliminating the need to transmit sensitive sensor data to the cloud.
 
 ### Key Contributions
-1. **TinyRadar-OL Framework**: The first end-to-end framework enabling on-device continual learning for FMCW radar-based gesture recognition at the extreme IoT edge.
-2. **TinyRadar Training Engine (TTE) Integration**: A customized compilation pipeline supporting int8-quantized forward and backward passes, drastically reducing the SRAM footprint and energy consumption.
-3. **Quantization-Aware Scaling (QAS)**: A novel stabilization technique to prevent divergence during low-precision on-device training.
-4. **Data Privacy & Personalization**: Eliminates the need for cloud offloading, enabling user-specific gesture personalization while ensuring strict data privacy directly on the MCU.
+1. **TinyRadar-OL Framework**: The first on-device continual learning framework (<64 kB) designed for edge FMCW radar that runs backpropagation entirely within the strict SRAM boundaries of low-power microcontrollers without cloud dependency.
+2. **Lightweight Adaptation & SNR-Adaptive Optimization**: A parameter-efficient layer-wise tuning approach combined with an SNR-adaptive learning rate mechanism to stabilize quantized backpropagation.
+3. **Deployment & AWGN Perturbation Visualization**: Microcontroller implementation (Cortex-M4, TI IWRL6432) validating adaptation accuracy (99%) under an ultra-low footprint of 52.4 kB SRAM (54.6% savings under a standard 64 kB budget). This is supported by visual micro-Doppler heatmap analysis of simulated Additive White Gaussian Noise (AWGN) perturbations across varying SNR levels (20 dB, 10 dB, 5 dB).
 
 ---
 
