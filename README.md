@@ -8,10 +8,11 @@ Welcome to the official repository for **"TinyRadar-OL: Ultra-Low Memory Continu
 
 TinyRadar-OL introduces a breakthrough in running **on-device training** for Hand Gesture Recognition (HGR) using FMCW radar. By leveraging our custom **Tiny Training Engine (TTE)**, the framework performs full int8-quantized forward passes and customized backward passes. This allows edge devices to personalize gesture recognition models on the fly while operating under strict ultra-low memory constraints, eliminating the need to transmit sensitive sensor data to the cloud.
 
-### Key Highlights
-- **Ultra-Low Memory Footprint**: Drastically optimized SRAM usage during both inference and backward propagation (training).
-- **On-Device Continual Learning**: Adapts dynamically to user-specific gestures locally.
-- **End-to-End TTE Pipeline**: Provides a workflow from a PyTorch model down to C code optimized for ARM Cortex-M MCUs and PC simulation.
+### Key Contributions
+1. **TinyRadar-OL Framework**: The first end-to-end framework enabling on-device continual learning for FMCW radar-based gesture recognition at the extreme IoT edge.
+2. **Tiny Training Engine (TTE) Integration**: A customized compilation pipeline supporting int8-quantized forward and backward passes, drastically reducing the SRAM footprint and energy consumption.
+3. **Quantization-Aware Scaling (QAS)**: A novel stabilization technique to prevent divergence during low-precision on-device training.
+4. **Data Privacy & Personalization**: Eliminates the need for cloud offloading, enabling user-specific gesture personalization while ensuring strict data privacy directly on the MCU.
 
 ---
 
