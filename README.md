@@ -57,7 +57,7 @@ The intermediate JSON representation is parsed and transformed into optimized C 
 *Outputs provided in this repo:* The generated C code and network headers are located under `scripts/codegen/`.
 
 ### 3. PC Simulation
-If you wish to test the model and training loop on a PC emulator before flashing to an MCU, you can compile the project using standard GCC. This uses the `arm_intrinsics_mock.h` header to simulate ARM CMSIS-NN math functions on x86:
+If you wish to test the model and training loop on a PC emulator before flashing to an MCU, you can compile the project using standard GCC. This uses the `arm_intrinsics_mock.h` header to simulate [ARM CMSIS-NN](https://github.com/ARM-software/CMSIS-NN) math functions on x86:
 
 ```bash
 gcc -O3 -o tte_main \
@@ -97,17 +97,7 @@ The actual on-device runtime is built using the Code Composer Studio project.
 
 ---
 
-## 📜 Citation
-If you find this code or our methodology useful for your research, please consider citing our manuscript:
 
-```bibtex
-@article{tinyradar_ol_2026,
-  title={TinyRadar-OL: Ultra-Low Memory Continual Learning for Personalized FMCW Radar Gesture Recognition at the IoT Edge},
-  author={Trinh, Tuan and others},
-  journal={TBD},
-  year={2026}
-}
-```
 
 ## ⚖️ License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
