@@ -1,0 +1,2548 @@
+[
+  {
+    "name": "nn.mcuconv2d@0",
+    "type": "nn.mcuconv2d",
+    "attrs": {
+      "strides": [
+        1,
+        2
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "groups": 1,
+      "channels": null,
+      "kernel_size": null,
+      "data_layout": "NCHW",
+      "kernel_layout": "OIHW",
+      "out_layout": "",
+      "out_dtype": ""
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "var_type": "parameter",
+        "shape": [
+          1,
+          8,
+          20,
+          40
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v0_weight",
+        "var_type": "parameter",
+        "shape": [
+          16,
+          8,
+          3,
+          3
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v0_bias",
+        "var_type": "parameter",
+        "shape": [
+          16
+        ],
+        "dtype": "int32",
+        "meta": null
+      },
+      {
+        "name": "v0_zero_x",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v0_zero_y",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v0_scale",
+        "var_type": "parameter",
+        "shape": [
+          16
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcuconv2d@0",
+        "var_type": "activation",
+        "shape": [
+          1,
+          16,
+          20,
+          20
+        ],
+        "dtype": "int32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcutruncate@1",
+    "type": "nn.mcutruncate",
+    "attrs": {
+      "min": -128,
+      "max": 127
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcuconv2d@0",
+        "var_type": "activation",
+        "shape": [
+          1,
+          16,
+          20,
+          20
+        ],
+        "dtype": "int32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcutruncate@1",
+        "var_type": "activation",
+        "shape": [
+          1,
+          16,
+          20,
+          20
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.relu@2",
+    "type": "nn.relu",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_nn.mcutruncate@1",
+        "var_type": "activation",
+        "shape": [
+          1,
+          16,
+          20,
+          20
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.relu@2",
+        "var_type": "activation",
+        "shape": [
+          1,
+          16,
+          20,
+          20
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcuconv2d@3",
+    "type": "nn.mcuconv2d",
+    "attrs": {
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "groups": 1,
+      "channels": null,
+      "kernel_size": null,
+      "data_layout": "NCHW",
+      "kernel_layout": "OIHW",
+      "out_layout": "",
+      "out_dtype": ""
+    },
+    "inputs": [
+      {
+        "name": "out_nn.relu@2",
+        "var_type": "activation",
+        "shape": [
+          1,
+          16,
+          20,
+          20
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v1_weight",
+        "var_type": "parameter",
+        "shape": [
+          32,
+          16,
+          3,
+          3
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v1_bias",
+        "var_type": "parameter",
+        "shape": [
+          32
+        ],
+        "dtype": "int32",
+        "meta": null
+      },
+      {
+        "name": "v1_zero_x",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v1_zero_y",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v1_scale",
+        "var_type": "parameter",
+        "shape": [
+          32
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcuconv2d@3",
+        "var_type": "activation",
+        "shape": [
+          1,
+          32,
+          9,
+          9
+        ],
+        "dtype": "int32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcutruncate@4",
+    "type": "nn.mcutruncate",
+    "attrs": {
+      "min": -128,
+      "max": 127
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcuconv2d@3",
+        "var_type": "activation",
+        "shape": [
+          1,
+          32,
+          9,
+          9
+        ],
+        "dtype": "int32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcutruncate@4",
+        "var_type": "activation",
+        "shape": [
+          1,
+          32,
+          9,
+          9
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.relu@5",
+    "type": "nn.relu",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_nn.mcutruncate@4",
+        "var_type": "activation",
+        "shape": [
+          1,
+          32,
+          9,
+          9
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.relu@5",
+        "var_type": "activation",
+        "shape": [
+          1,
+          32,
+          9,
+          9
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcuconv2d@6",
+    "type": "nn.mcuconv2d",
+    "attrs": {
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "groups": 1,
+      "channels": null,
+      "kernel_size": null,
+      "data_layout": "NCHW",
+      "kernel_layout": "OIHW",
+      "out_layout": "",
+      "out_dtype": ""
+    },
+    "inputs": [
+      {
+        "name": "out_nn.relu@5",
+        "var_type": "activation",
+        "shape": [
+          1,
+          32,
+          9,
+          9
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v2_weight",
+        "var_type": "parameter",
+        "shape": [
+          64,
+          32,
+          3,
+          3
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v2_bias",
+        "var_type": "parameter",
+        "shape": [
+          64
+        ],
+        "dtype": "int32",
+        "meta": null
+      },
+      {
+        "name": "v2_zero_x",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v2_zero_y",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v2_scale",
+        "var_type": "parameter",
+        "shape": [
+          64
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcuconv2d@6",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcutruncate@7",
+    "type": "nn.mcutruncate",
+    "attrs": {
+      "min": -128,
+      "max": 127
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcuconv2d@6",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcutruncate@7",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.relu@8",
+    "type": "nn.relu",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_nn.mcutruncate@7",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.relu@8",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.max_pool2d@9",
+    "type": "nn.max_pool2d",
+    "attrs": {
+      "pool_size": [
+        2,
+        2
+      ],
+      "strides": [
+        2,
+        2
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "layout": "NCHW",
+      "out_layout": "",
+      "ceil_mode": 0
+    },
+    "inputs": [
+      {
+        "name": "out_nn.relu@8",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.max_pool2d@9",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          2,
+          2
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@10",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        1,
+        256,
+        1,
+        1
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_nn.max_pool2d@9",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@10",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcuconv2d@11",
+    "type": "nn.mcuconv2d",
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "groups": 1,
+      "channels": null,
+      "kernel_size": null,
+      "data_layout": "NCHW",
+      "kernel_layout": "OIHW",
+      "out_layout": "",
+      "out_dtype": ""
+    },
+    "inputs": [
+      {
+        "name": "out_reshape@10",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v4_weight",
+        "var_type": "parameter",
+        "shape": [
+          10,
+          256,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v4_bias",
+        "var_type": "parameter",
+        "shape": [
+          10
+        ],
+        "dtype": "int32",
+        "meta": null
+      },
+      {
+        "name": "v4_zero_x",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v4_zero_y",
+        "var_type": "parameter",
+        "shape": [
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "v4_scale",
+        "var_type": "parameter",
+        "shape": [
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcuconv2d@11",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "int32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.mcutruncate@12",
+    "type": "nn.mcutruncate",
+    "attrs": {
+      "min": -128,
+      "max": 127
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcuconv2d@11",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "int32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.mcutruncate@12",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@13",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        0,
+        0
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcutruncate@12",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@13",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "cast@14",
+    "type": "cast",
+    "attrs": {
+      "dtype": "float32"
+    },
+    "inputs": [
+      {
+        "name": "out_reshape@13",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_cast@14",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.log_softmax@15",
+    "type": "nn.log_softmax",
+    "attrs": {
+      "axis": -1
+    },
+    "inputs": [
+      {
+        "name": "out_cast@14",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.log_softmax@15",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.cross_entropy_with_logits@16",
+    "type": "nn.cross_entropy_with_logits",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_nn.log_softmax@15",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "label",
+        "var_type": "parameter",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.cross_entropy_with_logits@16",
+        "var_type": "activation",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 0,
+          "output_info": "fwd@output"
+        }
+      }
+    ]
+  },
+  {
+    "name": "cast@17",
+    "type": "cast",
+    "attrs": {
+      "dtype": "float32"
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcuconv2d@11",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "int32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_cast@17",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "greater_equal@18",
+    "type": "greater_equal",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_cast@17",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "greater_equal@18-constant",
+        "var_type": "constant",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "data": -128.0
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_greater_equal@18",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "less_equal@19",
+    "type": "less_equal",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_cast@17",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "less_equal@19-constant",
+        "var_type": "constant",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "data": 127.0
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_less_equal@19",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "multiply@20",
+    "type": "multiply",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_greater_equal@18",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "bool",
+        "meta": null
+      },
+      {
+        "name": "out_less_equal@19",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "bool",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_multiply@20",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "ones@21",
+    "type": "ones",
+    "attrs": {
+      "shape": [],
+      "dtype": "float32"
+    },
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "out_ones@21",
+        "var_type": "activation",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "negative@22",
+    "type": "negative",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_ones@21",
+        "var_type": "activation",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_negative@22",
+        "var_type": "activation",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "multiply@23",
+    "type": "multiply",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_negative@22",
+        "var_type": "activation",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "label",
+        "var_type": "parameter",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_multiply@23",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "sum@24",
+    "type": "sum",
+    "attrs": {
+      "axis": [
+        -1
+      ],
+      "keepdims": 1,
+      "exclude": 0
+    },
+    "inputs": [
+      {
+        "name": "out_multiply@23",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_sum@24",
+        "var_type": "activation",
+        "shape": [
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "exp@25",
+    "type": "exp",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_nn.log_softmax@15",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_exp@25",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "multiply@26",
+    "type": "multiply",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_sum@24",
+        "var_type": "activation",
+        "shape": [
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "out_exp@25",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_multiply@26",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "subtract@27",
+    "type": "subtract",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_multiply@23",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "out_multiply@26",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_subtract@27",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@28",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        1,
+        10,
+        1,
+        1
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_subtract@27",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@28",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "zeros@29",
+    "type": "zeros",
+    "attrs": {
+      "shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "dtype": "float32"
+    },
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "out_zeros@29",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "where@30",
+    "type": "where",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_multiply@20",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "bool",
+        "meta": null
+      },
+      {
+        "name": "out_reshape@28",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "out_zeros@29",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_where@30",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@31",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        1,
+        -1,
+        1,
+        1
+      ]
+    },
+    "inputs": [
+      {
+        "name": "v4_scale",
+        "var_type": "parameter",
+        "shape": [
+          10
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@31",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "multiply@32",
+    "type": "multiply",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_where@30",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "out_reshape@31",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_multiply@32",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "sum@33",
+    "type": "sum",
+    "attrs": {
+      "axis": [
+        1
+      ],
+      "keepdims": 0,
+      "exclude": 1
+    },
+    "inputs": [
+      {
+        "name": "out_multiply@32",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_sum@33",
+        "var_type": "activation",
+        "shape": [
+          10
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 0,
+          "output_info": "v4_bias"
+        }
+      }
+    ]
+  },
+  {
+    "name": "cast@34",
+    "type": "cast",
+    "attrs": {
+      "dtype": "float32"
+    },
+    "inputs": [
+      {
+        "name": "out_reshape@10",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_cast@34",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@35",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        1,
+        -1,
+        0,
+        0
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_cast@34",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@35",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "tile@36",
+    "type": "tile",
+    "attrs": {
+      "reps": [
+        1,
+        256,
+        1,
+        1
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_multiply@32",
+        "var_type": "activation",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_tile@36",
+        "var_type": "activation",
+        "shape": [
+          1,
+          2560,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@37",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        -1,
+        1,
+        0,
+        0
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_tile@36",
+        "var_type": "activation",
+        "shape": [
+          1,
+          2560,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@37",
+        "var_type": "activation",
+        "shape": [
+          2560,
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "nn.conv2d@38",
+    "type": "nn.conv2d",
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "groups": 256,
+      "channels": null,
+      "kernel_size": null,
+      "data_layout": "NCHW",
+      "kernel_layout": "OIHW",
+      "out_layout": "",
+      "out_dtype": ""
+    },
+    "inputs": [
+      {
+        "name": "out_reshape@35",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "out_reshape@37",
+        "var_type": "activation",
+        "shape": [
+          2560,
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_nn.conv2d@38",
+        "var_type": "activation",
+        "shape": [
+          1,
+          2560,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@39",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        1,
+        256,
+        10,
+        1,
+        1
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_nn.conv2d@38",
+        "var_type": "activation",
+        "shape": [
+          1,
+          2560,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@39",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "sum@40",
+    "type": "sum",
+    "attrs": {
+      "axis": [
+        0
+      ],
+      "keepdims": 0,
+      "exclude": 0
+    },
+    "inputs": [
+      {
+        "name": "out_reshape@39",
+        "var_type": "activation",
+        "shape": [
+          1,
+          256,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_sum@40",
+        "var_type": "activation",
+        "shape": [
+          256,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "transpose@41",
+    "type": "transpose",
+    "attrs": {
+      "axes": [
+        1,
+        0,
+        2,
+        3
+      ]
+    },
+    "inputs": [
+      {
+        "name": "out_sum@40",
+        "var_type": "activation",
+        "shape": [
+          256,
+          10,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_transpose@41",
+        "var_type": "activation",
+        "shape": [
+          10,
+          256,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 0,
+          "output_info": "v4_weight"
+        }
+      }
+    ]
+  },
+  {
+    "name": "cast@42",
+    "type": "cast",
+    "attrs": {
+      "dtype": "float32"
+    },
+    "inputs": [
+      {
+        "name": "out_nn.mcuconv2d@6",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_cast@42",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "greater_equal@43",
+    "type": "greater_equal",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_cast@42",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "greater_equal@43-constant",
+        "var_type": "constant",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "data": -128.0
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_greater_equal@43",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "less_equal@44",
+    "type": "less_equal",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_cast@42",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "less_equal@44-constant",
+        "var_type": "constant",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "data": 127.0
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_less_equal@44",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "multiply@45",
+    "type": "multiply",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_greater_equal@43",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": null
+      },
+      {
+        "name": "out_less_equal@44",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_multiply@45",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "zeros@46",
+    "type": "zeros",
+    "attrs": {
+      "shape": [
+        1,
+        64,
+        4,
+        4
+      ],
+      "dtype": "int8"
+    },
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "out_zeros@46",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "less@47",
+    "type": "less",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_nn.mcutruncate@7",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "out_zeros@46",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_less@47",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "zeros@48",
+    "type": "zeros",
+    "attrs": {
+      "shape": [
+        1,
+        64,
+        4,
+        4
+      ],
+      "dtype": "int8"
+    },
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "out_zeros@48",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "where@49",
+    "type": "where",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_less@47",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": null
+      },
+      {
+        "name": "out_zeros@46",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "out_zeros@48",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_where@49",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "zeros@50",
+    "type": "zeros",
+    "attrs": {
+      "shape": [
+        1,
+        64,
+        4,
+        4
+      ],
+      "dtype": "int8"
+    },
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "out_zeros@50",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "where@51",
+    "type": "where",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_multiply@45",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "bool",
+        "meta": null
+      },
+      {
+        "name": "out_where@49",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      },
+      {
+        "name": "out_zeros@50",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_where@51",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "cast@52",
+    "type": "cast",
+    "attrs": {
+      "dtype": "float32"
+    },
+    "inputs": [
+      {
+        "name": "out_where@51",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "int8",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_cast@52",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "reshape@53",
+    "type": "reshape",
+    "attrs": {
+      "newshape": [
+        1,
+        -1,
+        1,
+        1
+      ]
+    },
+    "inputs": [
+      {
+        "name": "v2_scale",
+        "var_type": "parameter",
+        "shape": [
+          64
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_reshape@53",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "multiply@54",
+    "type": "multiply",
+    "attrs": {},
+    "inputs": [
+      {
+        "name": "out_cast@52",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": null
+      },
+      {
+        "name": "out_reshape@53",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_multiply@54",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "sum@55",
+    "type": "sum",
+    "attrs": {
+      "axis": [
+        1
+      ],
+      "keepdims": 0,
+      "exclude": 1
+    },
+    "inputs": [
+      {
+        "name": "out_multiply@54",
+        "var_type": "activation",
+        "shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "dtype": "float32",
+        "meta": null
+      }
+    ],
+    "outputs": [
+      {
+        "name": "out_sum@55",
+        "var_type": "activation",
+        "shape": [
+          64
+        ],
+        "dtype": "float32",
+        "meta": {
+          "children": 0,
+          "output_info": "v2_bias"
+        }
+      }
+    ]
+  }
+]

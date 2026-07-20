@@ -1,0 +1,120 @@
+
+Cortex_M4_0: 
+
+Cortex_M4_0: ====================================================
+
+Cortex_M4_0:    Tiny Training Engine (TTE) Noise Debugger        
+
+Cortex_M4_0: ====================================================
+
+Cortex_M4_0: 
+
+Cortex_M4_0: ======================================================
+
+Cortex_M4_0:  EXPERIMENT: Class 8 with 5 dB Noise
+
+Cortex_M4_0: ======================================================
+
+Cortex_M4_0: [STEP 1] Running Clean Inference on Class 8 (10 samples)...
+
+Cortex_M4_0:  -> Sample 0 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 1.0000 0.0000 
+
+Cortex_M4_0:  -> Sample 1 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0001 0.0000 0.0000 0.9998 0.0000 
+
+Cortex_M4_0:  -> Sample 2 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.9999 0.0000 
+
+Cortex_M4_0:  -> Sample 3 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0003 0.0000 0.0000 0.9997 0.0000 
+
+Cortex_M4_0:  -> Sample 4 Clean Softmax Probabilities: 0.0000 0.0000 0.0001 0.0000 0.0000 0.0000 0.0000 0.0000 0.9998 0.0000 
+
+Cortex_M4_0:  -> Sample 5 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 1.0000 0.0000 
+
+Cortex_M4_0:  -> Sample 6 Clean Softmax Probabilities: 0.0000 0.0000 0.0001 0.0000 0.0000 0.0000 0.0000 0.0000 0.9998 0.0000 
+
+Cortex_M4_0:  -> Sample 7 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 1.0000 0.0000 
+
+Cortex_M4_0:  -> Sample 8 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 1.0000 0.0000 
+
+Cortex_M4_0:  -> Sample 9 Clean Softmax Probabilities: 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 1.0000 0.0000 
+
+Cortex_M4_0:  -> Clean Predictions: 8 8 8 8 8 8 8 8 8 8 
+
+Cortex_M4_0: 
+
+Cortex_M4_0: [STEP 2] Running Noisy (5 dB) Inference on Class 8 (10 samples)...
+
+Cortex_M4_0:  -> Sample 0 Noisy Softmax Probabilities: 0.0000 0.0462 0.5509 0.0051 0.0000 0.0000 0.0000 0.0801 0.3176 0.0000 
+
+Cortex_M4_0:  -> Sample 1 Noisy Softmax Probabilities: 0.0000 0.0969 0.2917 0.0081 0.0000 0.0000 0.0003 0.5060 0.0969 0.0000 
+
+Cortex_M4_0:  -> Sample 2 Noisy Softmax Probabilities: 0.0000 0.0138 0.1650 0.0020 0.0001 0.0000 0.0000 0.1650 0.6541 0.0000 
+
+Cortex_M4_0:  -> Sample 3 Noisy Softmax Probabilities: 0.0000 0.0362 0.2491 0.0018 0.0001 0.0000 0.0001 0.5691 0.1436 0.0000 
+
+Cortex_M4_0:  -> Sample 4 Noisy Softmax Probabilities: 0.0000 0.0168 0.6023 0.0019 0.0001 0.0000 0.0001 0.2636 0.1154 0.0000 
+
+Cortex_M4_0:  -> Sample 5 Noisy Softmax Probabilities: 0.0000 0.0002 0.2962 0.0021 0.0000 0.0000 0.0000 0.0248 0.6767 0.0000 
+
+Cortex_M4_0:  -> Sample 6 Noisy Softmax Probabilities: 0.0000 0.0001 0.5458 0.0051 0.0000 0.0000 0.0000 0.0347 0.4144 0.0000 
+
+Cortex_M4_0:  -> Sample 7 Noisy Softmax Probabilities: 0.0000 0.0006 0.4301 0.0004 0.0000 0.0000 0.0000 0.0023 0.5665 0.0000 
+
+Cortex_M4_0:  -> Sample 8 Noisy Softmax Probabilities: 0.0000 0.0000 0.1267 0.0001 0.0000 0.0000 0.0000 0.0020 0.8711 0.0000 
+
+Cortex_M4_0:  -> Sample 9 Noisy Softmax Probabilities: 0.0000 0.0001 0.4262 0.0003 0.0000 0.0000 0.0000 0.0119 0.5614 0.0000 
+
+Cortex_M4_0:  -> Noisy Predictions: 2 7 8 7 2 8 2 8 8 8 
+
+Cortex_M4_0: 
+
+Cortex_M4_0: [STEP 3] Training on 10 Noisy (5 dB) Samples for 5 epochs...
+
+Cortex_M4_0: weight3 classifier channel 9 first 10 elements: -58 49 -3 -106 -6 -40 10 -47 18 41 
+
+Cortex_M4_0: bias3 classifier biases: 943 -301 85 -445 -1154 -177 -784 -1028 -125 288 
+
+Cortex_M4_0: bias2 layer 2 biases first 10 elements: 5780 -1385 -8969 4010 -1148 1401 6781 8828 -17395 1037 
+
+Cortex_M4_0: Epochs: 1/5 |#####                    | 20% [loss=1.7654, lr=0.000200, blr=0.000200]
+
+Cortex_M4_0: Epochs: 2/5 |##########               | 40% [loss=6.1102, lr=0.000200, blr=0.000200]
+
+Cortex_M4_0: Epochs: 3/5 |###############          | 60% [loss=0.0000, lr=0.000200, blr=0.000200]
+
+Cortex_M4_0: Epochs: 4/5 |####################     | 80% [loss=0.0000, lr=0.000200, blr=0.000200]
+
+Cortex_M4_0: Epochs: 5/5 |#########################| 100% [loss=0.0000, lr=0.000200, blr=0.000200]
+
+Cortex_M4_0: weight3 classifier channel 9 first 10 elements: -58 49 -3 -106 -6 -40 10 -47 18 41 
+
+Cortex_M4_0: bias3 classifier biases: 943 -399 -68 -445 -1154 -177 -784 -1189 206 288 
+
+Cortex_M4_0: bias2 layer 2 biases first 10 elements: 5780 -1385 -8969 4010 -1148 1401 6781 8828 -17395 1037 
+
+Cortex_M4_0:  -> Training Complete! Duration: 8481 ms
+
+Cortex_M4_0: 
+
+Cortex_M4_0: [STEP 4] Running Post-Training Noisy (5 dB) Inference on Class 8 (10 samples)...
+
+Cortex_M4_0:  -> Sample 0 Post-Training Noisy Softmax Probabilities: 0.0000 0.0010 0.0010 0.0010 0.0001 0.0003 0.0003 0.0003 0.9960 0.0000 
+
+Cortex_M4_0:  -> Sample 1 Post-Training Noisy Softmax Probabilities: 0.0000 0.0003 0.0010 0.0008 0.0001 0.0001 0.0008 0.0001 0.9967 0.0000 
+
+Cortex_M4_0:  -> Sample 2 Post-Training Noisy Softmax Probabilities: 0.0000 0.0004 0.0001 0.0003 0.0002 0.0001 0.0000 0.0001 0.9988 0.0000 
+
+Cortex_M4_0:  -> Sample 3 Post-Training Noisy Softmax Probabilities: 0.0000 0.0013 0.0001 0.0003 0.0004 0.0001 0.0004 0.0001 0.9973 0.0000 
+
+Cortex_M4_0:  -> Sample 4 Post-Training Noisy Softmax Probabilities: 0.0000 0.0003 0.0001 0.0008 0.0004 0.0000 0.0010 0.0003 0.9971 0.0000 
+
+Cortex_M4_0:  -> Sample 5 Post-Training Noisy Softmax Probabilities: 0.0000 0.0000 0.0001 0.0001 0.0000 0.0000 0.0000 0.0000 0.9998 0.0000 
+
+Cortex_M4_0:  -> Sample 6 Post-Training Noisy Softmax Probabilities: 0.0000 0.0001 0.0023 0.0018 0.0000 0.0001 0.0000 0.0023 0.9934 0.0000 
+
+Cortex_M4_0:  -> Sample 7 Post-Training Noisy Softmax Probabilities: 0.0000 0.0000 0.0000 0.0001 0.0000 0.0001 0.0000 0.0000 0.9997 0.0000 
+
+Cortex_M4_0:  -> Sample 8 Post-Training Noisy Softmax Probabilities: 0.0000 0.0000 0.0001 0.0001 0.0000 0.0000 0.0000 0.0000 0.9996 0.0000 
+
+Cortex_M4_0:  -> Sample 9 Post-Training Noisy Softmax Probabilities: 0.0000 0.0000 0.0001 0.0001 0.0003 0.0000 0.0000 0.0000 0.9995 0.0000 
+
+Cortex_M4_0:  -> Predictions with New Weights: 8 8 8 8 8 8 8 8 8 8 
