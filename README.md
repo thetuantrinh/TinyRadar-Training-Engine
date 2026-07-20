@@ -11,7 +11,7 @@ TinyRadar-OL introduces a breakthrough in running **on-device training** for Han
 ### Key Contributions
 1. **TinyRadar-OL Framework**: The first on-device continual learning framework (<64 kB) designed for edge FMCW radar that runs backpropagation entirely within the strict SRAM boundaries of low-power microcontrollers without cloud dependency.
 2. **Lightweight Adaptation & SNR-Adaptive Optimization**: A parameter-efficient layer-wise tuning approach combined with an SNR-adaptive learning rate mechanism to stabilize quantized backpropagation.
-3. **Deployment & AWGN Perturbation Visualization**: Microcontroller implementation (Cortex-M4, TI IWRL6432) validating adaptation accuracy (99%) under an ultra-low footprint of 52.4 kB SRAM (54.6% savings under a standard 64 kB budget). This is supported by visual micro-Doppler heatmap analysis of simulated Additive White Gaussian Noise (AWGN) perturbations across varying SNR levels (20 dB, 10 dB, 5 dB).
+3. **Deployment & AWGN Perturbation Visualization**: Microcontroller implementation (Cortex-M4, [TI IWRL6432AOPEVM](https://www.ti.com/tool/IWRL6432AOPEVM)) validating adaptation accuracy (99%) under an ultra-low footprint of 52.4 kB SRAM (54.6% savings under a standard 64 kB budget). This is supported by visual micro-Doppler heatmap analysis of simulated Additive White Gaussian Noise (AWGN) perturbations across varying SNR levels (20 dB, 10 dB, 5 dB).
 
 ---
 
@@ -44,6 +44,7 @@ Our Quantization-Aware Scaling (QAS) technique ensures stable on-device learning
 This repository encapsulates the end-to-end pipeline. It contains the pre-compiled C outputs in `scripts/codegen/` and the runtime Code Composer Studio (CCS) project in `TTE-HGR`.
 
 ### Prerequisites
+- [TI IWRL6432AOPEVM Evaluation Module](https://www.ti.com/tool/IWRL6432AOPEVM) (for hardware deployment)
 - Code Composer Studio (CCS) / TI ARM Clang Compiler (for MCU deployment)
 - GCC Compiler (for PC simulation)
 
