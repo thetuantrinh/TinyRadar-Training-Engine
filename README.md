@@ -2,15 +2,15 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Welcome to the official repository for **"TinyRadar-OL: Ultra-Low Memory Continual Learning for Personalized FMCW Radar Gesture Recognition at the IoT Edge"**. This repository provides the complete framework and source code to replicate the Tiny Training Engine (TTE) pipeline, designed for continuous learning and adaptation directly on microcontrollers (MCUs) at the edge.
+Welcome to the official repository for **"TinyRadar-OL: Ultra-Low Memory Continual Learning for Personalized FMCW Radar Gesture Recognition at the IoT Edge"**. This repository provides the complete framework and source code to replicate the TinyRadar Training Engine (TTE) pipeline, designed for continuous learning and adaptation directly on microcontrollers (MCUs) at the edge.
 
 ## 🌟 Overview
 
-TinyRadar-OL introduces a breakthrough in running **on-device training** for Hand Gesture Recognition (HGR) using FMCW radar. By leveraging our custom **Tiny Training Engine (TTE)**, the framework performs full int8-quantized forward passes and customized backward passes. This allows edge devices to personalize gesture recognition models on the fly while operating under strict ultra-low memory constraints, eliminating the need to transmit sensitive sensor data to the cloud.
+TinyRadar-OL introduces a breakthrough in running **on-device training** for Hand Gesture Recognition (HGR) using FMCW radar. By leveraging our custom **TinyRadar Training Engine (TTE)**, the framework performs full int8-quantized forward passes and customized backward passes. This allows edge devices to personalize gesture recognition models on the fly while operating under strict ultra-low memory constraints, eliminating the need to transmit sensitive sensor data to the cloud.
 
 ### Key Contributions
 1. **TinyRadar-OL Framework**: The first end-to-end framework enabling on-device continual learning for FMCW radar-based gesture recognition at the extreme IoT edge.
-2. **Tiny Training Engine (TTE) Integration**: A customized compilation pipeline supporting int8-quantized forward and backward passes, drastically reducing the SRAM footprint and energy consumption.
+2. **TinyRadar Training Engine (TTE) Integration**: A customized compilation pipeline supporting int8-quantized forward and backward passes, drastically reducing the SRAM footprint and energy consumption.
 3. **Quantization-Aware Scaling (QAS)**: A novel stabilization technique to prevent divergence during low-precision on-device training.
 4. **Data Privacy & Personalization**: Eliminates the need for cloud offloading, enabling user-specific gesture personalization while ensuring strict data privacy directly on the MCU.
 
@@ -53,7 +53,7 @@ The offline phase involves tracing the PyTorch model (`assets/model.pt`), perfor
 *Outputs provided in this repo:* `assets/int8-graph.json`, `assets/int8-params.pkl`, `assets/scale.json`.
 
 ### 2. Code Generation (Codegen)
-The intermediate JSON representation is parsed and transformed into optimized C code using the Tiny Training Engine compiler.
+The intermediate JSON representation is parsed and transformed into optimized C code using the TinyRadar Training Engine compiler.
 *Outputs provided in this repo:* The generated C code and network headers are located under `scripts/codegen/`.
 
 ### 3. PC Simulation
@@ -91,7 +91,7 @@ gcc -O3 -o tte_main \
 The actual on-device runtime is built using the Code Composer Studio project.
 1. Open **Code Composer Studio**.
 2. Import the `TTE-HGR` directory as a CCS Project.
-3. The project is pre-configured to link the generated model (`genModel.c`), the Tiny Training Engine backend kernels (`TinyEngine/src`), and the main driver (`main.c`).
+3. The project is pre-configured to link the generated model (`genModel.c`), the TinyRadar Training Engine backend kernels (`TinyEngine/src`), and the main driver (`main.c`).
 4. Build the project using the **Release** or **Debug** configuration.
 5. Flash the generated binary onto the target MCU for on-device inference and continual learning.
 
